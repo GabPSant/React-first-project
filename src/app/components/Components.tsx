@@ -1,4 +1,4 @@
-import './componentes.css';
+import './componentes.css'; // Representa o arquivo de estilizaçãi para a página
 import Image from 'next/image';
 import icone from "../../../public/react-icon.png";
 import dance from "../../../public/dance.gif"
@@ -23,14 +23,15 @@ function Header(texto: string, id?: string, classes?: string){
 export function Quadrado(){
     return (
         <section>
-            {Paragrafo("Quadrado")}
+            {Paragrafo("Quadrado (ele gira!)")}
             <div className="quadrado"></div>
         </section>
     );
 }
 
 export function Titulo():JSX.Element{
-    return Header("Página React bagunçada: Bem vindo!","titulo");
+    // <></> - funciona como elemento 'pai' no react, não vai aparecer no console do navegador
+    return <>{Header("Página React (testes e prática): Bem vindo!","titulo")}</>;
 }
 
 export function Botao(){
@@ -65,7 +66,7 @@ export function ListaItens(){
 export function Imagem(){
     return (
         <section>
-            {Paragrafo("Icone do React (clique na imagem e você será mandado para o site ofical do React")}
+            {Paragrafo("Icone do React (clique na imagem e você será mandado para o site ofical do React)")}
             <a href="https://pt-br.legacy.reactjs.org/" target='_blanck'>
                 <Image src={icone}
                 width={500}

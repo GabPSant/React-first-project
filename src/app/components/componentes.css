@@ -25,14 +25,9 @@ section{
     font-family: 'Times New Roman';
 }
 
-#titulo:focus{
-    background-color: black;
-    color: red;
-}
-
 .quadrado{
-    align-content: center;
     background-color: red;
+    margin-left: 1.5rem;
     width: 5rem;
     height: 5rem;
 }
