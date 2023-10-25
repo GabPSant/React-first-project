@@ -1,9 +1,15 @@
 import Gallery from "./Gallery";
+import {Quadrado, Titulo, Botao, ListaItens, Imagem, Rodape} from "./components/Components";
 
 export default function Home(){
   return (
     <main>
-      <Gallery />
+      <Titulo />
+      <Quadrado />
+      <Botao />
+      <ListaItens />
+      <Imagem />
+      {Rodape("Esse é o fim dessa página","Obrigado por ver até o final, até mais!")}
     </main>
   );
 }
