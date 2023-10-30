@@ -1,18 +1,24 @@
-import './componentes.css'; // Representa o arquivo de estilizaçãi para a página
+import './componentes.css'; // Representa o arquivo de estilização para a página
 import Image from 'next/image';
 import icone from "../../../public/react-icon.png";
 import dance from "../../../public/dance.gif"
+import {ReactNode} from 'react';
 /*
     Componente de Quadrado:
         1. Crie um componente chamado Quadrado que renderize um elemento <div> com uma cor de fundo,
         2. largura e altura fixas para representar um quadrado.
 */
 
-function Paragrafo(texto:string){
+function Paragrafo({texto}:{texto:string}){
     return <p style={{fontWeight: "550"}}>{texto}</p>;
 }
 
-function Header(texto: string, id?: string, classes?: string){
+interface definirHeader{
+    texto:string,
+    id?:string,
+    classes?:string
+}
+function Header({texto, id, classes}:definirHeader){
     return (
         <header id= {id} className= {classes}>
             <h1>{texto}</h1>
@@ -23,7 +29,7 @@ function Header(texto: string, id?: string, classes?: string){
 export function Quadrado(){
     return (
         <section>
-            {Paragrafo("Quadrado (ele gira!)")}
+            <Paragrafo texto="Quadrado (ele gira!)"/>
             <div className="quadrado"></div>
         </section>
     );
@@ -31,7 +37,9 @@ export function Quadrado(){
 
 export function Titulo():JSX.Element{
     // <></> - funciona como elemento 'pai' no react, não vai aparecer no console do navegador
-    return <>{Header("Página React (testes e prática): Bem vindo!","titulo")}</>;
+    return <> 
+    <Header texto='Página React (testes e prática): Bem vindo!' classes='titulo' />
+    </>;
 }
 
 export function Botao(){
@@ -42,22 +50,17 @@ export function Botao(){
     )
 }
 
-export function ListaItens(){
+interface ListProps{
+    titulo:string
+    children:ReactNode;
+    //children permite colocar elementos HTML dentro de um componente de forma não definida
+}
+export function ListaItens({titulo,children}:ListProps){    
     return(
         <section>
-            {Paragrafo("Lista de Frutas")}
+            <Paragrafo texto={titulo}/>
             <ul>
-                <li>
-                    <span>Maças</span>
-                </li>
-
-                <li>
-                    <span>Uvas</span>
-                </li>
-
-                <li>
-                    <span>Mangas</span>
-                </li>
+                {children}
             </ul>
         </section>
     );
@@ -66,7 +69,7 @@ export function ListaItens(){
 export function Imagem(){
     return (
         <section>
-            {Paragrafo("Icone do React (clique na imagem e você será mandado para o site ofical do React)")}
+            <Paragrafo texto="Icone do React (clique na imagem e você será mandado para o site ofical do React)"/>
             <a href="https://pt-br.legacy.reactjs.org/" target='_blanck'>
                 <Image src={icone}
                 width={500}
@@ -77,7 +80,12 @@ export function Imagem(){
     );
 }
 
-export function Rodape(texto1:string, texto2:string){
+interface rodape{
+    texto1:string,
+    texto2:string
+}
+
+export function Rodape({texto1, texto2}:rodape){
     return (
         <footer style={{
             display: "flex",
